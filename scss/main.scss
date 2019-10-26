@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+.board {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  .box {
+    width: 30%;
+    height: 150px;
+    background: red;
+    margin: 1.5%;
+    cursor: pointer;
+
+    &.blue {
+      background: blue;
+    }
+
+    &.green {
+      background: green;
+    }
+  }
+}
+
+.alertBox {
+  width: 50%;
+  font-size: 2rem;
+  background: black;
+  border: 3px solid white;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin: auto;
+
+  &.win {
+    background: lightgreen;
+  }
+}
