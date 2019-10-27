@@ -1,58 +1,85 @@
-@mixin introAnimation {
-  animation: intro 1s ease-out;
-}
+@import 'config';
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: #eee;
+  background: no-repeat $background-image;
+  background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   @include introAnimation();
 }
 
 header {
-  text-align: center;
-}
-
-.board {
-  width: 40%;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-
-  .box {
-    width: 30%;
-    height: 150px;
-    background: black;
-    margin: 1.5%;
-    cursor: pointer;
-    font-size: 6rem;
-    color: white;
-    text-align: center;
-
-    transition: all 1s ease-out;
-  }
-}
-
-.markChoose {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.alertBox {
   width: 50%;
-  font-size: 2rem;
-  background: black;
-  border: 3px solid white;
-  color: white;
+  margin: 1rem auto;
+  padding: 0.3rem 0.8rem;
   text-align: center;
-  padding: 1rem;
-  margin: auto;
+  background: rgba($wood-color, 0.5);
+  border: 5px solid $secondary-wood-color;
+}
 
-  &.win {
-    background: lightgreen;
+main {
+  color: $text-color;
+
+  .board {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    .box {
+      width: 30%;
+      height: 150px;
+      background: rgba($wood-color, 0.5);
+      margin: 1.5%;
+      cursor: pointer;
+      font-size: 6rem;
+      text-align: center;
+      border-radius: 7px;
+
+      transition: all 1s ease-out;
+    }
+  }
+
+  .markChoose {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .alertBox {
+    width: 50%;
+    font-size: 2rem;
+    background: rgba($wood-color, 0.8);
+    border: 3px solid $secondary-wood-color;
+    text-align: center;
+    padding: 1rem;
+    margin: auto;
+    @include easeOut();
+
+    &.win {
+      background: rgba($win-color, 0.8);
+    }
+  }
+
+  .restartBtn {
+    text-align: center;
+    margin: 1rem 0px 0px 0px;
+
+    button {
+      border: 2px solid $secondary-wood-color;
+      background-color: $wood-color;
+      padding: 0.5rem 1.5rem;
+      font-weight: bold;
+      color: $text-color;
+      cursor: pointer;
+      @include easeOut();
+
+      &:hover {
+        background-color: rgb(95, 49, 23);
+      }
+    }
   }
 }
 

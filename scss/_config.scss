@@ -1,0 +1,14 @@
+$main-color: black;
+$win-color: lightgreen;
+$wood-color: rgb(141, 73, 33);
+$secondary-wood-color: rgb(95, 49, 23);
+$background-image: url('../image/wood-texture.jpg');
+$text-color: white;
+
+@mixin introAnimation {
+  animation: intro 1s ease-out;
+}
+
+@mixin easeOut {
+  transition: all 300ms ease-out;
+}

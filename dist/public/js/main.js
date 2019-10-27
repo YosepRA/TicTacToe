@@ -1,7 +1,7 @@
-// let board = document.querySelector('.board');
 let boxes = document.querySelectorAll('.box');
 let boxesArray = Array.from(boxes);
 let alertBox = document.querySelector('.alertBox');
+let restartBtn = document.querySelector('.restartBtn button');
 
 // Model
 let tictactoe = {
@@ -68,44 +68,31 @@ function checkWin() {
   );
 }
 
-// function boardClick() {
-//   if (tictactoe.status !== 'playing') {
-//     alert('Pick mark for Player 1 first');
-//   }
-// }
+function restart() {
+  // let { board, currentPlayer, status } = tictactoe;
+  // Reset model
+  for (let i = 0; i < tictactoe.board.length; i++) tictactoe.board[i] = '';
+  tictactoe.currentPlayer = 1;
+  tictactoe.status = 'playing';
 
-// function init() {
-//   let pickBtn = document.querySelector('.markChoose-input button');
-//   let select = document.querySelector('#mark');
-//   let markInput = document.querySelector('.markChoose-input');
-//   let markOutput = document.querySelector('.markChoose-output');
-
-//   board.addEventListener('click', boardClick);
-
-//   pickBtn.addEventListener('click', () => {
-//     // Update app mark state.
-//     let playerOne = select.value;
-//     let playerTwo = playerOne === 'X' ? 'O' : 'X';
-//     tictactoe.mark = [playerOne, playerTwo];
-
-//     markInput.style.display = 'none';
-//     markOutput.style.display = 'block';
-//     markOutput.textContent = `Player 1: ${tictactoe.mark[0]}, Player 2: ${tictactoe.mark[1]}`;
-//     alertBox.textContent = `Player ${tictactoe.currentPlayer}'s turn`;
-//     boxes.forEach(box => {
-//       box.addEventListener('click', check);
-//     });
-//     tictactoe.status = 'playing';
-
-//     board.removeEventListener('click', boardClick);
-//   });
-// }
+  // Reset view
+  // Alert box
+  alertBox.textContent = `Player ${tictactoe.currentPlayer}'s turn`;
+  alertBox.classList.remove('win');
+  // Board boxes
+  for (let i = 0; i < boxes.length; i++) {
+    boxes[i].textContent = '';
+    boxes[i].classList.remove('clicked');
+  }
+}
 
 function init() {
   alertBox.textContent = `Player ${tictactoe.currentPlayer}'s turn`;
   boxes.forEach(box => {
     box.addEventListener('click', check);
   });
+
+  restartBtn.addEventListener('click', restart);
 }
 
 init();
